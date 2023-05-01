@@ -18,7 +18,9 @@
     },
     "include": [
         "src",
-        "node_modules/@supabase/supabase-js/src/lib/supabaseClient.js"
+        "node_modules/@supabase/supabase-js/src/lib/supabaseClient.js",
+        "vite-env.d.ts",
+        "supabaseClient.ts"
     ],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import supabase from "../supabaseClient.js";
+import supabase from "../../../supabaseClient.js";
+
+import { PostgrestError, PostgrestSingleResponse } from "@supabase/supabase-js";
+import { PostgrestResponseSuccess } from "@supabase/postgrest-js";
 
 function DataFetcher(tableToFetch: string) {
-    const defaultQuestionsList: IQuestion[] = [
+    const errorQuestionsList: Array<IQuestion> = [
         {
             id: 0,
             answer: "You should not be seing this, an error must have occured!",
@@ -12,20 +15,32 @@ function DataFetcher(tableToFetch: string) {
             popularity_percentage: 0,
         },
     ];
-    const [fetchError, setFetchError] = useState(defaultQuestionsList);
+    const defaultQuestionsList: Array<IQuestion> = [
+        {
+            id: 0,
+            answer: "",
+            like: 0,
+            dislike: 0,
+            title: "",
+            popularity_percentage: 0,
+        },
+    ];
+    const [fetchError, setFetchError] = useState(errorQuestionsList);
     const [fetchedArticles, setFetchedArticles] =
         useState(defaultQuestionsList);
 
     useEffect(() => {
         const fetchArticles = async () => {
-            const { data, error } = await supabase.from(tableToFetch).select();
+            const { data, error }: { data: any; error: any } = await supabase
+                .from(tableToFetch)
+                .select();
             if (error) {
-                setFetchError(defaultQuestionsList);
-                setFetchedArticles([]);
+                setFetchError(errorQuestionsList);
+                setFetchedArticles(defaultQuestionsList);
             }
             if (data) {
                 setFetchedArticles(data);
-                setFetchError(defaultQuestionsList);
+                setFetchError(errorQuestionsList);
             }
         };
         fetchArticles();
@@ -39,8 +54,13 @@ function RateButtons({ question, page }: { question: IQuestion; page: IPage }) {
             <p>Was this article helpful?</p>
             <button
                 onClick={async () => {
+                    let rpcCall: "increment_faq" | "increment_forum" =
+                        "increment_forum"; // this is just a placeholder, rpc doesn't let a template literal through
+                    page.pageName = "faq"
+                        ? (rpcCall = "increment_faq")
+                        : "increment_forum";
                     const { error } = await supabase.rpc(
-                        `increment_${page.pageName}`, // function increment_faq or increment_forum
+                        rpcCall, // function increment_faq or increment_forum
                         {
                             row_id: question.id,
                         }
@@ -51,8 +71,13 @@ function RateButtons({ question, page }: { question: IQuestion; page: IPage }) {
             </button>
             <button
                 onClick={async () => {
+                    let rpcCall: "decrement_faq" | "decrement_forum" =
+                        "decrement_forum"; // this is just a placeholder, rpc doesn't let a template literal through
+                    page.pageName = "faq"
+                        ? (rpcCall = "decrement_faq")
+                        : "decrement_forum";
                     const { error } = await supabase.rpc(
-                        `decrement_${page.pageName}`, // function decrement_faq or decrement_forum
+                        rpcCall, // function decrement_faq or decrement_forum
                         {
                             row_id: question.id,
                         }
@@ -95,7 +120,6 @@ export default function DisplayQuestionsList({
 }) {
     const questionsList: IQuestion[] = DataFetcher(pageState.pageName);
 
-    console.log(questionsList);
     return (
         <div className="QuestionsList">
             {questionsList.map((question) => {

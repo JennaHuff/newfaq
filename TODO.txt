@@ -1,4 +1,1 @@
-error handling, in function App (App.jsx),
-    if DataFetcher gets an error, it returns null, so as to not break FaqList, the error msg does not get returned
-
 separate favicons in a folder inside public
