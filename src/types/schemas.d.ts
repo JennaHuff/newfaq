@@ -38,6 +38,7 @@ export interface Database {
             forum: {
                 Row: {
                     answer: string | null;
+                    "answers-array": Json[] | null;
                     dislike: number | null;
                     id: number;
                     like: number | null;
@@ -46,6 +47,7 @@ export interface Database {
                 };
                 Insert: {
                     answer?: string | null;
+                    "answers-array"?: Json[] | null;
                     dislike?: number | null;
                     id?: number;
                     like?: number | null;
@@ -54,6 +56,7 @@ export interface Database {
                 };
                 Update: {
                     answer?: string | null;
+                    "answers-array"?: Json[] | null;
                     dislike?: number | null;
                     id?: number;
                     like?: number | null;

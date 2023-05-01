@@ -1,5 +1,10 @@
-import DisplayQuestionsList from "../DisplayQuestionsList/DisplayQuestionsList";
+import DisplayQuestionsList from "../DatabaseInteractions/DisplayQuestionsList";
 
 export default function Faq({ page }: { page: IPage }) {
-    return <DisplayQuestionsList pageState={page} />; // it really only needs page.value
+    return (
+        <div>
+            <DisplayQuestionsList pageState={page} />
+            {/* // it really only needs page.value} */}
+        </div>
+    );
 }
