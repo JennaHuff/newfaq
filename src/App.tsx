@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
+import Header from "./components/HeaderAndFooter/Header/Header";
 import Forum from "./components/Forum/Forum";
 import Faq from "./components/Faq/Faq";
 
@@ -15,7 +15,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Faq page={page} />} />
                 <Route path="/faq" element={<Faq page={page} />} />
-                <Route path="/forum" element={<Forum page={page} />} />
+                {/* <Route path="/forum" element={<Forum page={page} />} /> */}
             </Routes>
         </div>
     );

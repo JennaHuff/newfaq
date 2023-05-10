@@ -1,6 +1,19 @@
 -separate favicons in a folder inside public
 -root to individual questions, custom url (https://reactrouter.com/en/main/start/tutorial)
--add an "add question" feature
+
+
+-error pages
+-figure out how to type useLoaderData
+-rate buttons should be shown as active instead of displaying a thumb
+-might be good to replace Question buttons with react router navlinks
+-ratebuttons is not connected to anything, it should either update a user's database or lift vote state in <Question />, in Faq.tsx
+
+
+
+====== Forum ======
+
 (-add a "reply" feature
 add display of likes and dislikes)
--figure out why it's so slow and how to fix it
+-add an "add question" feature
+
+====================

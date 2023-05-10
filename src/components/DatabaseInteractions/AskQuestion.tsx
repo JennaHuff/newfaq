@@ -1,5 +1,6 @@
 import { useState } from "react";
 import supabase from "../../../supabaseClient";
+import "./AskQuestion.css";
 
 // allows users to submit questions, adds the question to the database
 
@@ -8,6 +9,7 @@ export function AskQuestion() {
 
     return (
         <input
+            className="askQuestionInput"
             placeholder="Ask a new question (press Enter to submit)"
             type="text"
             onChange={(e) => {

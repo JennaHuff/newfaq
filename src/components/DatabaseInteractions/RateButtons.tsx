@@ -1,34 +1,27 @@
-import supabase from "../../../supabaseClient.js";
+import { useState } from "react";
+import "./RateButtons.css";
 
-export function RateButtons({
-    question,
-    page,
-}: {
-    question: IQuestion;
-    page: IPage;
-}) {
+// This function sets a "vote" state
+// this vote should be paired with a question's id, and added to a user's votes database
+// this database keeps tracks of every questions the user has voted for, and the user's rating
+// every time a vote changes it can update the question's rating in the main database
+// this should ensure a user can only vote once
+
+export function RateButtons() {
+    const [vote, setVote] = useState(0); // === -1 for dislike, 0 for null, 1 for like
+
     return (
         <div className="RateElement">
             <p>Was this article helpful?</p>
             <button
-                onClick={async () => {
-                    type functionOptions = "increment_faq" | "increment_forum";
-                    const RPCfunctionToCall: functionOptions = `increment_${page.pageName}`;
-                    const { error } = await supabase.rpc(RPCfunctionToCall, {
-                        row_id: question.id,
-                    });
-                }}
+                className={vote === 1 ? "activeVote" : ""}
+                onClick={() => (vote === 1 ? setVote(0) : setVote(1))}
             >
                 👍
             </button>
             <button
-                onClick={async () => {
-                    type functionOptions = "decrement_faq" | "decrement_forum";
-                    const RPCfunctionToCall: functionOptions = `decrement_${page.pageName}`;
-                    const { error } = await supabase.rpc(RPCfunctionToCall, {
-                        row_id: question.id,
-                    });
-                }}
+                className={vote === -1 ? "activeVote" : ""}
+                onClick={() => (vote === -1 ? setVote(0) : setVote(-1))}
             >
                 👎
             </button>

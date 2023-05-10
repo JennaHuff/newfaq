@@ -1,13 +1,7 @@
-import { useState } from "react";
-import DisplayQuestionsList from "../DatabaseInteractions/DisplayQuestionsList";
-import { AskQuestion } from "../DatabaseInteractions/AskQuestion";
+import "./Forum.css";
+import { useLoaderData } from "react-router-dom";
 
-export default function Forum({ page }: { page: IPage }) {
-    return (
-        <div>
-            <AskQuestion />
-            <DisplayQuestionsList pageState={page} />
-            {/*  it really only needs page.value */}
-        </div>
-    );
+export default function Forum() {
+    // const { data } = useLoaderData() as IQuestion[];
+    return <div>WIP</div>;
 }

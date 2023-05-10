@@ -30,3 +30,5 @@ interface IReply {
     dislike: number;
     popularity_percentage: number;
 }
+
+type vote = "like" | null | "dislike";

@@ -1,0 +1,22 @@
+.Header {
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    background-color: darkslategray;
+    color: lightgrey;
+    box-shadow: rgba(0, 0, 0, 0.129) 0px 10px 8px;
+}
+
+.ButtonFaqOrForum {
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+#HeaderButton {
+    font-size: 1.2rem;
+}
