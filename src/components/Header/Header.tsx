@@ -1,5 +1,5 @@
 import ButtonFaqOrForum from "./ButtonFaqOrForum";
-import "./HeaderAndFooter.css";
+import "./Header.css";
 
 export default function Header() {
     return (
