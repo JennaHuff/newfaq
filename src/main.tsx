@@ -9,11 +9,13 @@ import {
     ForumLoader,
 } from ".//components/DatabaseInteractions/Loaders";
 import "./index.css";
+import ErrorPage from "./routes/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "faq/",

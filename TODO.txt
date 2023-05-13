@@ -1,8 +1,6 @@
 -separate favicons in a folder inside public
 -root to individual questions, custom url (https://reactrouter.com/en/main/start/tutorial)
 
-
--error pages
 -figure out how to type useLoaderData
 -might be good to replace Question buttons with react router navlinks
 -ratebuttons is not connected to anything, it should either update a user's database or lift vote state in <Question />, in Faq.tsx
