@@ -41,7 +41,7 @@ for (let i = 1; i <= 5; i++) {
 }
 
 function PostReply({ thread }) {
-    // accepts a thread, displays an input, on submit pushes the input as a thread to the original thread's answers array
+    // accepts a thread, displays an input box, on submit pushes the input as a thread to the original thread's answers array
     return (
         <form
             onSubmit={(e) => {
