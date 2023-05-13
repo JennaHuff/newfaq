@@ -8,6 +8,9 @@
     background-color: darkslategray;
     color: lightgrey;
     box-shadow: rgba(0, 0, 0, 0.129) 0px 10px 8px;
+
+    position: sticky;
+    top: 0;
 }
 
 .ButtonFaqOrForum {
