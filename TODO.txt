@@ -4,3 +4,9 @@
 -figure out how to type useLoaderData
 -might be good to replace Question buttons with react router navlinks
 -ratebuttons is not connected to anything, it should either update a user's database or lift vote state in <Question />, in Faq.tsx
+
+-merge faq table and forum table in DB
+    add an column to specify which table the question belongs to
+    display only questions belonging to the page (faq/forum questions)
+    users cannot answer questions from FAQ
+    
