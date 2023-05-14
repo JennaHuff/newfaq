@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Forum.css";
-import { Form, useLoaderData } from "react-router-dom";
-import { RateButtons } from "../DatabaseInteractions/RateButtons";
+import { RateButtons } from "../../components/rate-element/RateButtons";
 
 interface answerToThread {
     text: string;
@@ -18,7 +17,7 @@ let testPost1: answerToThread = {
 };
 
 for (let i = 1; i <= 5; i++) {
-    let answer: answerToThread = {
+    const answer: answerToThread = {
         text: `Answer ${i}`,
         likes: 0,
         dislikes: 0,
@@ -27,7 +26,7 @@ for (let i = 1; i <= 5; i++) {
 
     // Generate three answers for each answer
     for (let j = 1; j <= 3; j++) {
-        let nestedAnswer: answerToThread = {
+        const nestedAnswer: answerToThread = {
             text: `Nested Answer ${i}.${j}`,
             likes: 0,
             dislikes: 0,
@@ -46,12 +45,15 @@ function PostReply({ thread }) {
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                thread.answers.push({
-                    text: e.target.enteredAnswer.value,
-                    likes: 0,
-                    dislikes: 0,
-                    answers: [],
-                });
+                thread.answers = [
+                    ...thread.answers,
+                    {
+                        text: e.target.enteredAnswer.value,
+                        likes: 0,
+                        dislikes: 0,
+                        answers: [],
+                    },
+                ];
             }}
         >
             <input type="text" name="enteredAnswer" />
@@ -69,13 +71,7 @@ function DisplayThread({ thread }: { thread: answerToThread }) {
                 padding: "50px",
             }}
         >
-            <button
-                onClick={() =>
-                    threadVisibility === true
-                        ? setThreadVisibility(false)
-                        : setThreadVisibility(true)
-                }
-            >
+            <button onClick={() => setThreadVisibility((s) => !s)}>
                 {thread.text}
             </button>
             {`+${thread.likes} -${thread.dislikes}`}

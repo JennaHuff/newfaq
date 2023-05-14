@@ -11,7 +11,7 @@ export function RateButtons() {
     const [vote, setVote] = useState(0); // === -1 for dislike, 0 for null, 1 for like
 
     return (
-        <div className="RateElement">
+        <div>
             <p>Was this article helpful?</p>
             <button
                 className={vote === 1 ? "activeVote" : ""}

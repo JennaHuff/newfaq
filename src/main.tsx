@@ -1,36 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Faq from "./components/Faq/Faq";
-import Forum from "./components/Forum/Forum";
-import Root from "./routes/root";
-import {
-    FaqLoader,
-    ForumLoader,
-} from ".//components/DatabaseInteractions/Loaders";
+import Faq from "./pages/faq/Faq";
+import Forum from "./pages/forum/Forum";
+import MainLayout from "./components/layout/MainLayout";
+import { faqLoader, forumLoader } from "./services/supabase/loaders";
 import "./index.css";
-import ErrorPage from "./routes/ErrorPage";
+import ErrorPage from "./pages/errors/ErrorPage";
+import App from "./App";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: <MainLayout />,
         errorElement: <ErrorPage />,
         children: [
             {
                 path: "faq/",
                 element: <Faq />,
-                loader: FaqLoader,
+                loader: faqLoader,
                 children: [
                     {
                         path: ":id",
                         element: <Faq />,
-                        loader: FaqLoader,
+                        loader: faqLoader,
                     },
                 ],
             },
 
-            { path: "forum", element: <Forum />, loader: ForumLoader },
+            { path: "forum", element: <Forum />, loader: forumLoader },
         ],
     },
 ]);
@@ -38,6 +36,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <App>
+            <RouterProvider router={router} />
+        </App>
     </React.StrictMode>
 );

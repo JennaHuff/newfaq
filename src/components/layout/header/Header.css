@@ -1,4 +1,4 @@
-.Header {
+.header {
     /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
@@ -13,13 +13,13 @@
     top: 0;
 }
 
-.ButtonFaqOrForum {
+.navigation {
     align-self: center;
     display: flex;
     justify-content: space-between;
     width: 20%;
 }
 
-#HeaderButton {
+#header-button {
     font-size: 1.2rem;
 }

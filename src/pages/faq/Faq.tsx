@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Faq.css";
 
 import { Link, useLoaderData } from "react-router-dom";
-import { RateButtons } from "../DatabaseInteractions/RateButtons";
+import { RateButtons } from "../../components/rate-element/RateButtons";
 
 function Question({ question }: { question: IQuestion }) {
     // pretty sure this all could be a list of navlinks, with the answer and <hr> display: none

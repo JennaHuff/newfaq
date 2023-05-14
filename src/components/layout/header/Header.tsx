@@ -1,11 +1,11 @@
-import ButtonFaqOrForum from "./ButtonFaqOrForum";
+import Navigation from "./Navigation";
 import "./Header.css";
 
 export default function Header() {
     return (
-        <div className="Header">
+        <div className="header">
             <h1>Help center</h1>
-            <ButtonFaqOrForum />
+            <Navigation />
         </div>
     );
 }

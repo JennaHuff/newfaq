@@ -11,6 +11,7 @@
         "gen-types": "npx supabase gen types typescript --project-id idbyvrcagngyaigvbrat > schemas.ts"
     },
     "dependencies": {
+        "@supabase/auth-ui-react": "^0.4.2",
         "@supabase/supabase-js": "^2.21.0",
         "denoland": "^1.0.0",
         "dotenv": "10.0.0",
