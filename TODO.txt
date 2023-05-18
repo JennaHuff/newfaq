@@ -10,3 +10,6 @@
     display only questions belonging to the page (faq/forum questions)
     users cannot answer questions from FAQ
     
+
+login must not be asked when user accesses the site, but only when the user tries to vote
+it should then redirect to the faq

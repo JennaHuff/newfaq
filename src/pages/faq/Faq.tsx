@@ -15,9 +15,7 @@ function Question({ question }: { question: IQuestion }) {
             <Link to={`${question.id}`}>
                 <button
                     onClick={() => {
-                        answerVisibility
-                            ? setAnswerVisibility(false)
-                            : setAnswerVisibility(true);
+                        setAnswerVisibility(!answerVisibility);
                     }}
                 >
                     {question.title}
