@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Faq.css";
 
 import { Link, useLoaderData } from "react-router-dom";
 import { RateButtons } from "../../components/rate-element/RateButtons";
+import { useSession } from "../../components/auth/SessionContext";
 
 function Question({ question }: { question: IQuestion }) {
     // pretty sure this all could be a list of navlinks, with the answer and <hr> display: none
     // might help accessibility
+    const { session } = useSession();
     const [answerVisibility, setAnswerVisibility] = useState(false);
 
     return (
         <div className="question">
-            {/* below is the lightswitch */}
             <Link to={`${question.id}`}>
                 <button
                     onClick={() => {
@@ -21,11 +22,10 @@ function Question({ question }: { question: IQuestion }) {
                     {question.title}
                 </button>
             </Link>
-            {/* below is the lightbulb */}
             {answerVisibility && (
                 <div>
                     <p className="AnswerParagraph">{question.answer}</p>
-                    <RateButtons />
+                    {session && <RateButtons />}
                     <hr className="LinesSeparatingAnswers" />
                 </div>
             )}
