@@ -20,6 +20,12 @@
     width: 20%;
 }
 
+.username-and-log-in-button {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
 #header-button {
     font-size: 1.2rem;
 }
