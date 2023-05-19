@@ -42,6 +42,9 @@ export function useSession() {
     const session = useContext(SessionContext);
     return {
         session,
-        user: { username: session?.user.user_metadata.preferred_username },
+        user: {
+            user_id: session?.user.id,
+            username: session?.user.user_metadata.preferred_username,
+        },
     };
 }

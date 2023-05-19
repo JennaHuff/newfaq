@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import supabase from "../../services/supabase/supabaseClient";
 import { useSession } from "./SessionContext";
 

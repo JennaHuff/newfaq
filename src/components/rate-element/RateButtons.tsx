@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useSession } from "../auth/SessionContext";
 import "./RateButtons.css";
+import supabase from "../../services/supabase/supabaseClient";
 
-// This function sets a "vote" state
-// this vote should be paired with a question's id, and added to a user's votes database
-// this database keeps tracks of every questions the user has voted for, and the user's rating
-// every time a vote changes it can update the question's rating in the main database
-// this should ensure a user can only vote once
+async function insert(user_id: string, question_id: number, vote: boolean) {
+    console.log(user_id);
+    const { data, error } = await supabase.from("votes").insert([
+        {
+            user_id: user_id,
+            question_id: question_id,
+            vote: vote,
+        },
+    ]);
+}
 
-export function RateButtons() {
-    const [vote, setVote] = useState(0); // === -1 for dislike, 0 for null, 1 for like
+export function RateButtons({ question_id }: { question_id: number }) {
+    const { session, user } = useSession();
 
     return (
         <div>
             <p>Was this article helpful?</p>
-            <button
-                className={vote === 1 ? "activeVote" : ""}
-                onClick={() => (vote === 1 ? setVote(0) : setVote(1))}
-            >
+            <button onClick={() => insert(user.user_id!, question_id, true)}>
                 👍
             </button>
-            <button
-                className={vote === -1 ? "activeVote" : ""}
-                onClick={() => (vote === -1 ? setVote(0) : setVote(-1))}
-            >
+            <button onClick={() => insert(user.user_id!, question_id, false)}>
                 👎
             </button>
         </div>
