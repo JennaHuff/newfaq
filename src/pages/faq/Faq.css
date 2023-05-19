@@ -1,12 +1,9 @@
-.Faq {
-    /* border: 2px dashed green; */
-
+.faq {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
 }
-.Faq > button {
+.faq > button {
     width: fit-content;
     margin-bottom: 5vh;
 }
@@ -22,19 +19,11 @@
     text-align: center;
 }
 
-.activeAnswer {
-    display: block;
-}
-
-.hiddenAnswer {
-    display: none;
-}
-
-.AnswerParagraph {
+.answer-paragraph {
     font-size: 1.5rem;
 }
 
-.LinesSeparatingAnswers {
+.lines-separating-answers {
     border: 1px solid #eaeaea;
     width: 50%;
     margin: 5vh auto;

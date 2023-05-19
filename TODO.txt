@@ -1,3 +1,7 @@
+add user to user database
+
+
+
 -separate favicons in a folder inside public
 -root to individual questions, custom url (https://reactrouter.com/en/main/start/tutorial)
 

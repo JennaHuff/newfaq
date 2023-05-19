@@ -13,20 +13,19 @@ function Question({ question }: { question: IQuestion }) {
 
     return (
         <div className="question">
-            <Link to={`${question.id}`}>
-                <button
-                    onClick={() => {
-                        setAnswerVisibility(!answerVisibility);
-                    }}
-                >
-                    {question.title}
-                </button>
-            </Link>
+            <button
+                onClick={() => {
+                    setAnswerVisibility(!answerVisibility);
+                }}
+            >
+                {question.title}
+            </button>
+
             {answerVisibility && (
                 <div>
-                    <p className="AnswerParagraph">{question.answer}</p>
+                    <p className="answer-paragraph">{question.answer}</p>
                     {session && <RateButtons />}
-                    <hr className="LinesSeparatingAnswers" />
+                    <hr className="lines-separating-answers" />
                 </div>
             )}
         </div>
@@ -38,7 +37,7 @@ export default function Faq() {
     // for every row in data, render a <Question />
     const { data } = useLoaderData();
     return (
-        <div className="Faq">
+        <div className="faq">
             <h1>Frequently asked questions</h1>
             {data.map((question: IQuestion) => (
                 <Question key={question.id} question={question} />
