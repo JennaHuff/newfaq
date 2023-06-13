@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./Forum.css";
 import { RateButtons } from "../../components/rate-element/RateButtons";
 
 interface answerToThread {

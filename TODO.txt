@@ -17,3 +17,7 @@ add user to user database
 
 login must not be asked when user accesses the site, but only when the user tries to vote
 it should then redirect to the faq
+
+question__id: 21
+vote: true
+

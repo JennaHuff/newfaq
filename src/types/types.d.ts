@@ -8,7 +8,7 @@ interface IQuestion {
     id: number;
     title: string;
     answer: string;
-    like: number;
+    upvotes: number;
     dislike: number;
     popularity_percentage: number;
 }
@@ -16,7 +16,7 @@ interface IQuestion {
 interface IUserQuestion {
     id: number;
     title: string;
-    answer: Array<IReply>; // [{}, {}, {}]
+    answer: Array<IReply>;
     like: number;
     dislike: number;
     popularity_percentage: number;
