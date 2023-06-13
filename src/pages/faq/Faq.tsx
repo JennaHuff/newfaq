@@ -6,7 +6,6 @@ import { useSession } from "../../components/auth/SessionContext";
 import supabase from "../../services/supabase/supabaseClient";
 
 function Question({ question }: { question: IQuestion }) {
-    const { session } = useSession();
     const [answerVisibility, setAnswerVisibility] = useState(false);
 
     return (
@@ -22,11 +21,7 @@ function Question({ question }: { question: IQuestion }) {
             {answerVisibility && (
                 <div className="question-card">
                     <p className="answer-paragraph">{question.answer}</p>
-                    {session ? (
-                        <RateButtons question={question} />
-                    ) : (
-                        <p>{`👍 ${question.upvotes}      👎 ${question.dislike}`}</p>
-                    )}
+                    <RateButtons question={question} />
                 </div>
             )}
         </>
