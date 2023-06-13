@@ -14,8 +14,12 @@ export default function Navigation() {
     return (
         <div className="navigation">
             {navigationItems.map((item) => (
-                <Link key={item.key} to={`/${item.pageName}`}>
-                    <button id="header-button">{item.pageTitle}</button>
+                <Link
+                    className="navigation-link"
+                    key={item.key}
+                    to={`/${item.pageName}`}
+                >
+                    {item.pageTitle}
                 </Link>
             ))}
         </div>

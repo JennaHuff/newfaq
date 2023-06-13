@@ -1,12 +1,10 @@
 .header {
-    /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
     padding-left: 10%;
-    padding-right: 10%;
+    padding-right: 5%;
 
-    background-color: darkslategray;
-    color: lightgrey;
+    background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.129) 0px 10px 8px;
 
     position: sticky;
@@ -16,16 +14,18 @@
 .navigation {
     align-self: center;
     display: flex;
-    justify-content: space-between;
-    width: 20%;
+    gap: 2vw;
+}
+
+.navigation-link {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: black;
 }
 
 .username-and-log-in-button {
     align-self: center;
+    align-items: center;
     display: flex;
-    flex-direction: column;
-}
-
-#header-button {
-    font-size: 1.2rem;
+    gap: 2vw;
 }

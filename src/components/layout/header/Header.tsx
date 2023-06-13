@@ -5,7 +5,7 @@ import LogInOut from "../../auth/LogInOut";
 export default function Header() {
     return (
         <div className="header">
-            <h1>Help center</h1>
+            <h3>Help center</h3>
             <Navigation />
             <LogInOut />
         </div>
