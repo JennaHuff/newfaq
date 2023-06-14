@@ -1,0 +1,19 @@
+BEGIN
+  IF old.vote = TRUE THEN 
+    UPDATE public.faq SET upvotes = upvotes - 1 WHERE public.faq.id = new.question_id;
+  ELSIF old.vote = FALSE THEN 
+    UPDATE public.faq SET dislike = dislike - 1 WHERE public.faq.id = new.question_id;
+  END IF;
+
+  IF old.vote = new.vote THEN
+    DELETE FROM public.votes WHERE generated_vote_id = new.generated_vote_id;
+  ELSE
+    IF new.vote = TRUE THEN
+      UPDATE public.faq SET upvotes = upvotes + 1 WHERE public.faq.id = new.question_id;
+    ELSIF new.vote = FALSE THEN
+      UPDATE public.faq SET dislike = dislike + 1 WHERE public.faq.id = new.question_id;
+    END IF;
+  END IF;
+
+  RETURN(new);
+END;

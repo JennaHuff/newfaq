@@ -17,8 +17,16 @@ async function upsert(question_id: number, vote: boolean) {
     ]);
 }
 
-export function RateButtons({ question }: { question: IQuestion }) {
+export function RateButtons({
+    question,
+    vote,
+}: {
+    question: IQuestion;
+    vote: any;
+}) {
     const { session, user } = useSession();
+
+    console.log({ vote });
     return (
         <div className="vote-component">
             <p>Was this article helpful?</p>
@@ -28,6 +36,7 @@ export function RateButtons({ question }: { question: IQuestion }) {
                 }
             >
                 👍 {question.upvotes}
+                {vote?.vote === true && "CHECK"}
             </button>
             <button
                 onClick={() =>
@@ -35,6 +44,7 @@ export function RateButtons({ question }: { question: IQuestion }) {
                 }
             >
                 👎 {question.dislike}
+                {vote?.vote === false && "CHECK"}
             </button>
         </div>
     );

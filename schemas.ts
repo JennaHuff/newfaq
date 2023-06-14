@@ -14,26 +14,27 @@ export interface Database {
           answer: string | null
           dislike: number | null
           id: number
-          like: number | null
           popularity_percentage: number | null
           title: string | null
+          upvotes: number | null
         }
         Insert: {
           answer?: string | null
           dislike?: number | null
           id?: number
-          like?: number | null
           popularity_percentage?: number | null
           title?: string | null
+          upvotes?: number | null
         }
         Update: {
           answer?: string | null
           dislike?: number | null
           id?: number
-          like?: number | null
           popularity_percentage?: number | null
           title?: string | null
+          upvotes?: number | null
         }
+        Relationships: []
       }
       forum: {
         Row: {
@@ -42,6 +43,7 @@ export interface Database {
           id: number
           like: number | null
           popularity_percentage: number | null
+          test_trigger: boolean | null
           title: string | null
         }
         Insert: {
@@ -50,6 +52,7 @@ export interface Database {
           id?: number
           like?: number | null
           popularity_percentage?: number | null
+          test_trigger?: boolean | null
           title?: string | null
         }
         Update: {
@@ -58,55 +61,53 @@ export interface Database {
           id?: number
           like?: number | null
           popularity_percentage?: number | null
+          test_trigger?: boolean | null
           title?: string | null
         }
+        Relationships: []
       }
       votes: {
         Row: {
-          created_at: string | null
-          id: number
-          question_id: number | null
-          user_id: string | null
-          vote: boolean | null
+          created_at: string
+          generated_vote_id: string
+          question_id: number
+          user_id: string
+          vote: boolean
         }
         Insert: {
-          created_at?: string | null
-          id?: number
-          question_id?: number | null
-          user_id?: string | null
-          vote?: boolean | null
+          created_at?: string
+          generated_vote_id?: string
+          question_id: number
+          user_id?: string
+          vote: boolean
         }
         Update: {
-          created_at?: string | null
-          id?: number
-          question_id?: number | null
-          user_id?: string | null
-          vote?: boolean | null
+          created_at?: string
+          generated_vote_id?: string
+          question_id?: number
+          user_id?: string
+          vote?: boolean
         }
+        Relationships: [
+          {
+            foreignKeyName: "votes_question_id_fkey"
+            columns: ["question_id"]
+            referencedRelation: "faq"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "votes_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      decrement_faq: {
-        Args: {
-          row_id: number
-        }
-        Returns: undefined
-      }
-      decrement_forum: {
-        Args: {
-          row_id: number
-        }
-        Returns: undefined
-      }
-      increment_faq: {
-        Args: {
-          row_id: number
-        }
-        Returns: undefined
-      }
       increment_forum: {
         Args: {
           row_id: number
